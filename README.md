@@ -1,4 +1,4 @@
-# 🚀 NexPress — Next Generation PDF & OCR Editor
+# NexPress — Next Generation PDF & OCR Editor
 
 <p align="center">
   <img src="./screenshots/home.png" alt="NexPress Home Screen" width="800" />
