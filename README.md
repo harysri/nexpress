@@ -106,8 +106,6 @@ NexPress is a **Single Page Application (SPA)** with no backend. All logic lives
 
 ## 📸 Screenshots
 
-> 📁 Place your screenshots inside the `screenshots/` directory at the project root.
-
 ### Home Page
 
 ![Home Page](./screenshots/home.png)
