@@ -173,26 +173,6 @@ npm run dev
 
 The app will be served at **http://localhost:5173** with hot module replacement.
 
-### Production Build
-
-```bash
-npm run build
-```
-
-Build output is written to the `dist/` directory.
-
-### Preview Production Build
-
-```bash
-npm run preview
-```
-
-### Lint
-
-```bash
-npm run lint
-```
-
 ---
 
 ## 🗂️ Folder Structure
@@ -301,34 +281,6 @@ NexPress has **no backend API**. All processing is done entirely client-side usi
 
 ---
 
-## 🌐 Deployment
-
-### Deploy to Vercel
-
-```bash
-npm install -g vercel
-vercel
-```
-
-### Deploy to Netlify
-
-1. Push your repository to GitHub.
-2. Connect the repo in Netlify.
-3. Set **Build command** to `cd client && npm install && npm run build`.
-4. Set **Publish directory** to `client/dist`.
-5. Deploy.
-
-### Deploy to GitHub Pages
-
-```bash
-npm run build
-npx gh-pages -d client/dist
-```
-
-> Since there is no backend, deployment is as simple as hosting a static folder.
-
----
-
 ## 🔮 Future Improvements
 
 - [ ] **Cloud Save** — Optional cloud storage for processed files (Drive, Dropbox)
@@ -365,7 +317,7 @@ Distributed under the **MIT License**. See [`LICENSE`](./LICENSE) for more infor
 
 ## 👤 Author
 
-**Your Name**
+**Srihari Satheeshan**
 
 - GitHub: [@harysri](https://github.com/harysri)
 - Email: sriharisatheeshan820@gmail.com
