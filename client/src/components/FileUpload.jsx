@@ -1,77 +1,79 @@
-import React, { useCallback, useState } from "react";
-import { Upload } from "lucide-react";
+import { useId, useRef, useState } from "react";
+import { UploadCloud } from "lucide-react";
+import { KINDS } from "../utils/pdfTools";
 
-const FileUpload = ({
-  accept,
-  onFilesSelected,
+export default function FileUpload({
+  kind = "pdf",
   multiple = false,
-  label,
-  description,
-}) => {
-  const [dragActive, setDragActive] = useState(false);
+  onFilesSelected,
+  label = "Drop your file here",
+  description = "or click to browse",
+  disabled = false,
+}) {
+  const inputId = useId();
+  const inputRef = useRef(null);
+  const [dragging, setDragging] = useState(false);
+  const spec = KINDS[kind] || KINDS.pdf;
 
-  const handleDrag = useCallback((e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (e.type === "dragenter" || e.type === "dragover") {
-      setDragActive(true);
-    } else if (e.type === "dragleave") {
-      setDragActive(false);
-    }
-  }, []);
-
-  const handleDrop = useCallback(
-    (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      setDragActive(false);
-      const files = Array.from(e.dataTransfer.files);
-      onFilesSelected(files);
-    },
-    [onFilesSelected]
-  );
-
-  const handleFileInput = (e) => {
-    const files = Array.from(e.target.files);
-    onFilesSelected(files);
+  const handleFiles = (list) => {
+    const files = Array.from(list || []);
+    if (files.length) onFilesSelected(files);
+    // Allow choosing the same file again.
+    if (inputRef.current) inputRef.current.value = "";
   };
 
   return (
     <div
-      onDragEnter={handleDrag}
-      onDragLeave={handleDrag}
-      onDragOver={handleDrag}
-      onDrop={handleDrop}
-      className={`bg-slate-900/50 backdrop-blur-sm rounded-xl p-8 border transition-all duration-300 ${
-        dragActive
-          ? "border-indigo-500/50 bg-indigo-500/5"
-          : "border-slate-800 hover:border-slate-700"
+      onDragEnter={(event) => {
+        event.preventDefault();
+        if (!disabled) setDragging(true);
+      }}
+      onDragOver={(event) => event.preventDefault()}
+      onDragLeave={(event) => {
+        if (event.currentTarget.contains(event.relatedTarget)) return;
+        setDragging(false);
+      }}
+      onDrop={(event) => {
+        event.preventDefault();
+        setDragging(false);
+        if (!disabled) handleFiles(event.dataTransfer.files);
+      }}
+      className={`rounded-xl border border-dashed p-8 text-center transition-colors ${
+        dragging
+          ? "border-indigo-500 bg-indigo-500/5"
+          : "border-slate-700 bg-slate-900/40 hover:border-slate-600"
       }`}
     >
-      <div className="text-center fade-in-up">
-        <Upload className="w-16 h-16 text-indigo-400 mx-auto mb-4" />
-        <h3 className="text-xl font-semibold text-white mb-2">{label}</h3>
-        <p className="text-slate-400 mb-6">{description}</p>
-        <input
-          type="file"
-          multiple={multiple}
-          accept={accept}
-          onChange={handleFileInput}
-          className="hidden"
-          id="file-upload"
-        />
-        <label
-          htmlFor="file-upload"
-          className="inline-block bg-indigo-600 text-white px-6 py-2 rounded-md font-semibold cursor-pointer hover:bg-indigo-700 hover:scale-105 transition-all duration-300"
-        >
-          Choose Files
-        </label>
-        <p className="text-slate-400 text-sm mt-4">
-          {multiple ? "Select multiple files" : "Select a single file"}
-        </p>
-      </div>
+      <UploadCloud
+        className="mx-auto mb-4 h-12 w-12 text-indigo-400"
+        aria-hidden="true"
+      />
+      <p className="mb-1 text-lg font-semibold text-white">{label}</p>
+      <p className="mb-5 text-sm text-slate-400">{description}</p>
+
+      <input
+        ref={inputRef}
+        id={inputId}
+        type="file"
+        accept={spec.accept}
+        multiple={multiple}
+        disabled={disabled}
+        onChange={(event) => handleFiles(event.target.files)}
+        className="sr-only"
+      />
+      <label
+        htmlFor={inputId}
+        className={`inline-block rounded-lg bg-indigo-600 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-500 focus-within:ring-2 focus-within:ring-indigo-400 ${
+          disabled ? "pointer-events-none opacity-50" : "cursor-pointer"
+        }`}
+      >
+        Choose {multiple ? "files" : "file"}
+      </label>
+
+      <p className="mt-4 text-xs text-slate-500">
+        {multiple ? "Select one or more files" : "Select a single file"} · up to{" "}
+        {spec.maxSizeMB} MB · processed in your browser
+      </p>
     </div>
   );
-};
-
-export default FileUpload;
+}
