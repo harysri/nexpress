@@ -7,19 +7,18 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "node --test tests/pdfCore.test.js"
   },
   "dependencies": {
-    "@quicktoolsone/pdf-compress": "^2.0.0",
+    "@cantoo/pdf-lib": "^2.11.1",
     "framer-motion": "^12.23.26",
-    "jspdf": "^3.0.4",
     "jszip": "^3.10.1",
     "lucide-react": "^0.562.0",
     "pdf-lib": "^1.17.1",
     "pdfjs-dist": "^5.4.449",
     "react": "^19.2.3",
     "react-dom": "^19.2.0",
-    "react-pdf": "^10.2.0",
     "react-router-dom": "^7.11.0",
     "tesseract.js": "^7.0.0",
     "tesseract.js-core": "^6.1.2"
