@@ -1,94 +1,159 @@
-import React, { useEffect, useState } from "react";
-import { Document, Page, pdfjs } from "react-pdf";
-import { ChevronLeft, ChevronRight, ZoomIn, ZoomOut, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  X,
+  ZoomIn,
+  ZoomOut,
+} from "lucide-react";
+import { loadPdf } from "../lib/pdfjs";
+import PdfPage from "./PdfPage";
+import { GHOST_BUTTON } from "../lib/ui";
 
-// ✅ CORRECT worker
-pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
-
-const PDFPreview = ({ file, onClose }) => {
-  const [numPages, setNumPages] = useState(null);
+export default function PDFPreview({ file, onClose }) {
+  const [doc, setDoc] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
-  const [scale, setScale] = useState(1);
-  const [url, setUrl] = useState(null);
+  const [zoom, setZoom] = useState(1);
+  const [error, setError] = useState("");
+  const closeRef = useRef(null);
 
   useEffect(() => {
-    if (!file) return;
-
-    const objectUrl = URL.createObjectURL(file);
-    setUrl(objectUrl);
-
-    return () => URL.revokeObjectURL(objectUrl);
+    let alive = true;
+    (async () => {
+      try {
+        const loaded = await loadPdf(new Uint8Array(await file.arrayBuffer()));
+        if (alive) setDoc(loaded);
+        else loaded.destroy?.();
+      } catch {
+        if (alive) setError("This PDF could not be previewed.");
+      }
+    })();
+    return () => {
+      alive = false;
+    };
   }, [file]);
 
-  const onDocumentLoadSuccess = ({ numPages }) => {
-    setNumPages(numPages);
-    setPageNumber(1);
-  };
+  useEffect(
+    () => () => {
+      doc?.destroy?.();
+    },
+    [doc],
+  );
 
-  if (!file || !url) return null;
+  useEffect(() => {
+    closeRef.current?.focus();
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKeyDown);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [onClose]);
+
+  const total = doc?.numPages ?? null;
 
   return (
-    <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
-      <div className="bg-slate-900 rounded-2xl w-full max-w-6xl max-h-[90vh] flex flex-col">
-        {/* Header */}
-        <div className="flex justify-between p-6 border-b border-white/10">
-          <div>
-            <h3 className="text-white font-bold">{file.name}</h3>
-            <p className="text-sm text-slate-400">
-              Page {pageNumber} of {numPages ?? "--"}
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+      onClick={(event) => {
+        if (event.target === event.currentTarget) onClose();
+      }}
+    >
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-label={`Preview of ${file.name}`}
+        className="flex max-h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-slate-800 bg-slate-900"
+      >
+        <div className="flex items-start justify-between gap-4 border-b border-slate-800 p-4 sm:p-5">
+          <div className="min-w-0">
+            <h2 className="truncate text-sm font-bold text-white">
+              {file.name}
+            </h2>
+            <p className="text-xs text-slate-400">
+              {error || (total ? `Page ${pageNumber} of ${total}` : "Loading…")}
             </p>
           </div>
-          <button onClick={onClose}>
-            <X className="text-white" />
+          <button
+            ref={closeRef}
+            type="button"
+            onClick={onClose}
+            aria-label="Close preview"
+            className={GHOST_BUTTON}
+          >
+            <X className="h-4 w-4" aria-hidden="true" />
           </button>
         </div>
 
-        {/* Viewer */}
-        <div className="flex-1 overflow-auto flex justify-center p-4">
-          <Document
-            file={url}
-            onLoadSuccess={onDocumentLoadSuccess}
-            error={<p className="text-red-400">Invalid PDF</p>}
-            loading={<p className="text-white">Loading PDF…</p>}
-          >
-            <Page
-              pageNumber={pageNumber}
-              scale={scale}
-              renderTextLayer={false}
-              renderAnnotationLayer={false}
-            />
-          </Document>
+        <div className="flex-1 overflow-auto bg-slate-950/60 p-4">
+          {error ? (
+            <p className="py-16 text-center text-sm text-rose-300">{error}</p>
+          ) : (
+            <div className="flex justify-center">
+              <PdfPage
+                doc={doc}
+                pageNumber={pageNumber}
+                width={Math.round(620 * zoom)}
+                className="h-auto rounded shadow-xl"
+              />
+            </div>
+          )}
         </div>
 
-        {/* Controls */}
-        <div className="p-4 border-t border-white/10 flex justify-between">
-          <div className="flex gap-3">
-            <button onClick={() => setPageNumber((p) => Math.max(p - 1, 1))}>
-              <ChevronLeft className="text-white" />
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-800 p-4">
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setPageNumber((value) => Math.max(value - 1, 1))}
+              disabled={pageNumber <= 1}
+              aria-label="Previous page"
+              className={GHOST_BUTTON}
+            >
+              <ChevronLeft className="h-4 w-4" aria-hidden="true" />
             </button>
-            <span className="text-white">
-              {pageNumber}/{numPages}
+            <span className="min-w-[70px] text-center text-sm text-slate-300 tabular-nums">
+              {pageNumber} / {total ?? "–"}
             </span>
             <button
-              onClick={() => setPageNumber((p) => Math.min(p + 1, numPages))}
+              type="button"
+              onClick={() =>
+                setPageNumber((value) => Math.min(value + 1, total || value))
+              }
+              disabled={!total || pageNumber >= total}
+              aria-label="Next page"
+              className={GHOST_BUTTON}
             >
-              <ChevronRight className="text-white" />
+              <ChevronRight className="h-4 w-4" aria-hidden="true" />
             </button>
           </div>
 
-          <div className="flex gap-3">
-            <button onClick={() => setScale((s) => Math.max(s - 0.25, 0.5))}>
-              <ZoomOut className="text-white" />
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setZoom((value) => Math.max(value - 0.2, 0.6))}
+              aria-label="Zoom out"
+              className={GHOST_BUTTON}
+            >
+              <ZoomOut className="h-4 w-4" aria-hidden="true" />
             </button>
-            <span className="text-white">{Math.round(scale * 100)}%</span>
-            <button onClick={() => setScale((s) => Math.min(s + 0.25, 3))}>
-              <ZoomIn className="text-white" />
+            <span className="min-w-[46px] text-center text-sm text-slate-300 tabular-nums">
+              {Math.round(zoom * 100)}%
+            </span>
+            <button
+              type="button"
+              onClick={() => setZoom((value) => Math.min(value + 0.2, 2.4))}
+              aria-label="Zoom in"
+              className={GHOST_BUTTON}
+            >
+              <ZoomIn className="h-4 w-4" aria-hidden="true" />
             </button>
           </div>
         </div>
       </div>
     </div>
   );
-};
-
-export default PDFPreview;
+}
