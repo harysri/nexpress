@@ -87,7 +87,7 @@ export default function ImagesToPDF() {
       {tool.files.length > 0 && (
         <div className={CARD}>
           <div className="mb-4 flex items-center justify-between">
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-400">
+            <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
               {tool.files.length} image{tool.files.length === 1 ? "" : "s"}
             </h2>
             <span className="text-xs text-slate-500">drag to reorder</span>
