@@ -111,7 +111,7 @@ export default function ExtractImages() {
 
       {tool.files.length > 0 && (
         <div className={CARD}>
-          <p className="mb-4 truncate text-sm text-slate-400">
+          <p className="mb-4 truncate text-sm text-slate-500 dark:text-slate-400">
             {tool.file.name} · {formatFileSize(tool.file.size)}
           </p>
           <button
@@ -136,7 +136,7 @@ export default function ExtractImages() {
       {images.length > 0 && (
         <section className={CARD} aria-label="Extracted images">
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-400">
+            <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
               {images.length} image{images.length === 1 ? "" : "s"}
             </h2>
             <button
@@ -154,9 +154,9 @@ export default function ExtractImages() {
             {images.map((image) => (
               <li
                 key={image.file.name}
-                className="overflow-hidden rounded-lg border border-slate-800 bg-slate-900/60"
+                className="overflow-hidden rounded-lg border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/60"
               >
-                <div className="flex h-32 items-center justify-center bg-slate-950/50 p-2">
+                <div className="flex h-32 items-center justify-center bg-white/70 dark:bg-slate-950/50 p-2">
                   <img
                     src={image.url}
                     alt={`Extracted from page ${image.page}`}
@@ -165,10 +165,10 @@ export default function ExtractImages() {
                   />
                 </div>
                 <div className="p-2">
-                  <p className="flex items-center justify-between gap-1 text-xs text-slate-300">
+                  <p className="flex items-center justify-between gap-1 text-xs text-slate-600 dark:text-slate-300">
                     <span>Page {image.page}</span>
                     {image.pageRender && (
-                      <span className="rounded bg-amber-500/15 px-1.5 py-0.5 text-[10px] font-medium text-amber-300">
+                      <span className="rounded bg-amber-500/15 px-1.5 py-0.5 text-[10px] font-medium text-amber-700 dark:text-amber-300">
                         page
                       </span>
                     )}
