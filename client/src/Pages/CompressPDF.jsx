@@ -116,10 +116,10 @@ export default function CompressPDF() {
                     className={`cursor-pointer rounded-lg border p-3 transition-colors ${
                       selected
                         ? "border-emerald-500/60 bg-emerald-500/5"
-                        : "border-slate-800 hover:border-slate-700"
+                        : "border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700"
                     }`}
                   >
-                    <span className="flex items-center gap-2 text-sm font-semibold text-white">
+                    <span className="flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white">
                       <input
                         type="radio"
                         name="compression-level"
@@ -130,7 +130,7 @@ export default function CompressPDF() {
                       />
                       {option.label}
                     </span>
-                    <span className="mt-1 block text-xs leading-relaxed text-slate-400">
+                    <span className="mt-1 block text-xs leading-relaxed text-slate-500 dark:text-slate-400">
                       {option.hint}
                     </span>
                   </label>
