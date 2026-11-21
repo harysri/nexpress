@@ -115,7 +115,7 @@ export default function ImageToText() {
         <div className={CARD}>
           <div className="grid gap-5 md:grid-cols-2">
             <div>
-              <div className="flex max-h-64 items-center justify-center overflow-hidden rounded-lg border border-slate-800 bg-slate-950/50 p-2">
+              <div className="flex max-h-64 items-center justify-center overflow-hidden rounded-lg border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-950/50 p-2">
                 <img
                   src={tool.files[0].url}
                   alt={tool.file.name}
@@ -171,7 +171,7 @@ export default function ImageToText() {
       {(text || confidence !== null) && (
         <section className={CARD} aria-label="Extracted text">
           <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-400">
+            <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
               Extracted text
               {confidence !== null && (
                 <span className="ml-2 normal-case tracking-normal text-slate-500">
@@ -187,7 +187,7 @@ export default function ImageToText() {
                 className={GHOST_BUTTON}
               >
                 {copied ? (
-                  <Check className="h-4 w-4 text-emerald-400" aria-hidden="true" />
+                  <Check className="h-4 w-4 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
                 ) : (
                   <Copy className="h-4 w-4" aria-hidden="true" />
                 )}
