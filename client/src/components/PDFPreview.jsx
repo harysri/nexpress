@@ -67,14 +67,14 @@ export default function PDFPreview({ file, onClose }) {
         role="dialog"
         aria-modal="true"
         aria-label={`Preview of ${file.name}`}
-        className="flex max-h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-slate-800 bg-slate-900"
+        className="flex max-h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
       >
-        <div className="flex items-start justify-between gap-4 border-b border-slate-800 p-4 sm:p-5">
+        <div className="flex items-start justify-between gap-4 border-b border-slate-200 dark:border-slate-800 p-4 sm:p-5">
           <div className="min-w-0">
-            <h2 className="truncate text-sm font-bold text-white">
+            <h2 className="truncate text-sm font-bold text-slate-900 dark:text-white">
               {file.name}
             </h2>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               {error || (total ? `Page ${pageNumber} of ${total}` : "Loading…")}
             </p>
           </div>
@@ -89,9 +89,9 @@ export default function PDFPreview({ file, onClose }) {
           </button>
         </div>
 
-        <div className="flex-1 overflow-auto bg-slate-950/60 p-4">
+        <div className="flex-1 overflow-auto bg-slate-100 p-4 dark:bg-slate-950/60">
           {error ? (
-            <p className="py-16 text-center text-sm text-rose-300">{error}</p>
+            <p className="py-16 text-center text-sm text-rose-700 dark:text-rose-300">{error}</p>
           ) : (
             <div className="flex justify-center">
               <PdfPage
@@ -104,7 +104,7 @@ export default function PDFPreview({ file, onClose }) {
           )}
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-800 p-4">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 dark:border-slate-800 p-4">
           <div className="flex items-center gap-2">
             <button
               type="button"
@@ -115,7 +115,7 @@ export default function PDFPreview({ file, onClose }) {
             >
               <ChevronLeft className="h-4 w-4" aria-hidden="true" />
             </button>
-            <span className="min-w-[70px] text-center text-sm text-slate-300 tabular-nums">
+            <span className="min-w-[70px] text-center text-sm text-slate-600 dark:text-slate-300 tabular-nums">
               {pageNumber} / {total ?? "–"}
             </span>
             <button
@@ -140,7 +140,7 @@ export default function PDFPreview({ file, onClose }) {
             >
               <ZoomOut className="h-4 w-4" aria-hidden="true" />
             </button>
-            <span className="min-w-[46px] text-center text-sm text-slate-300 tabular-nums">
+            <span className="min-w-[46px] text-center text-sm text-slate-600 dark:text-slate-300 tabular-nums">
               {Math.round(zoom * 100)}%
             </span>
             <button
