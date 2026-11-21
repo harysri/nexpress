@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Mail, Github, Twitter, Linkedin, Heart } from "lucide-react";
+import { Heart } from "lucide-react";
+import { TOOLS } from "../data/tools";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -14,20 +15,13 @@ const Footer = () => {
     ],
   };
 
-  const tools = [
-    { name: "Compress PDF", href: "/compress" },
-    { name: "Merge PDF", href: "/merge" },
-    { name: "Password Protection", href: "/protect" },
-    { name: "Extract Images", href: "/extract-images" },
-    { name: "Images to PDF", href: "/images-to-pdf" },
-    { name: "Image to Text", href: "/image-to-text" },
-  ];
+  const tools = TOOLS.map((tool) => ({ name: tool.name, href: tool.path }));
 
   return (
-    <footer className="relative bg-slate-950 border-t border-slate-800 pt-12 sm:pt-16 md:pt-20 pb-6 sm:pb-8 md:pb-10 overflow-hidden font-sans">
+    <footer className="relative bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 pt-12 sm:pt-16 md:pt-20 pb-6 sm:pb-8 md:pb-10 overflow-hidden font-sans">
       {/* Background Decor - Subtle Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-[-20%] right-[-10%] w-[300px] sm:w-[400px] md:w-[500px] h-[300px] sm:h-[400px] md:h-[500px] rounded-full bg-indigo-900/10 blur-[80px] sm:blur-[100px]" />
+        <div className="absolute top-[-20%] right-[-10%] w-[300px] sm:w-[400px] md:w-[500px] h-[300px] sm:h-[400px] md:h-[500px] rounded-full bg-indigo-300/25 dark:bg-indigo-900/10 blur-[80px] sm:blur-[100px]" />
       </div>
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 max-w-7xl">
@@ -110,11 +104,11 @@ const Footer = () => {
                   </g>
                 </svg>
               </div>
-              <span className="text-lg sm:text-xl font-bold text-white tracking-tight group-hover:text-indigo-100 transition-colors">
+              <span className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white tracking-tight group-hover:text-indigo-600 dark:group-hover:text-indigo-100 transition-colors">
                 NexPress
               </span>
             </Link>
-            <p className="text-slate-400 mb-6 sm:mb-7 md:mb-8 max-w-sm text-sm sm:text-base leading-relaxed">
+            <p className="text-slate-500 dark:text-slate-400 mb-6 sm:mb-7 md:mb-8 max-w-sm text-sm sm:text-base leading-relaxed">
               Your trusted all-in-one PDF solution for compression, merging,
               encryption, and conversion. Built for speed, security, and
               simplicity.
@@ -123,7 +117,7 @@ const Footer = () => {
 
           {/* Quick Links - Tools */}
           <div>
-            <h3 className="text-white font-bold text-xs sm:text-sm uppercase tracking-wider mb-4 sm:mb-5 md:mb-6">
+            <h3 className="text-slate-900 dark:text-white font-bold text-xs sm:text-sm uppercase tracking-wider mb-4 sm:mb-5 md:mb-6">
               PDF Tools
             </h3>
             <ul className="space-y-3 sm:space-y-4">
@@ -131,9 +125,9 @@ const Footer = () => {
                 <li key={index}>
                   <Link
                     to={tool.href}
-                    className="text-sm sm:text-base text-slate-400 hover:text-indigo-400 active:text-indigo-300 transition-colors duration-200 flex items-center gap-2 group"
+                    className="text-sm sm:text-base text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 active:text-indigo-700 dark:active:text-indigo-300 transition-colors duration-200 flex items-center gap-2 group"
                   >
-                    <span className="w-1 h-1 rounded-full bg-slate-700 group-hover:bg-indigo-500 transition-colors"></span>
+                    <span className="w-1 h-1 rounded-full bg-slate-200 dark:bg-slate-700 group-hover:bg-indigo-500 transition-colors"></span>
                     {tool.name}
                   </Link>
                 </li>
@@ -143,7 +137,7 @@ const Footer = () => {
 
           {/* Support Links */}
           <div>
-            <h3 className="text-white font-bold text-xs sm:text-sm uppercase tracking-wider mb-4 sm:mb-5 md:mb-6">
+            <h3 className="text-slate-900 dark:text-white font-bold text-xs sm:text-sm uppercase tracking-wider mb-4 sm:mb-5 md:mb-6">
               Support
             </h3>
             <ul className="space-y-3 sm:space-y-4">
@@ -151,7 +145,7 @@ const Footer = () => {
                 <li key={index}>
                   <Link
                     to={link.href}
-                    className="text-sm sm:text-base text-slate-400 hover:text-indigo-400 active:text-indigo-300 transition-colors duration-200"
+                    className="text-sm sm:text-base text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 active:text-indigo-700 dark:active:text-indigo-300 transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -162,7 +156,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-slate-800 pt-6 sm:pt-7 md:pt-8 mt-6 sm:mt-7 md:mt-8">
+        <div className="border-t border-slate-200 dark:border-slate-800 pt-6 sm:pt-7 md:pt-8 mt-6 sm:mt-7 md:mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-5 md:gap-6">
             <p className="text-slate-500 text-xs sm:text-sm flex items-center text-center md:text-left">
               © {currentYear} NexPress. Made with{" "}
@@ -173,19 +167,19 @@ const Footer = () => {
             <div className="flex flex-wrap justify-center md:justify-end gap-4 sm:gap-6 md:gap-8">
               <Link
                 to="#"
-                className="text-xs sm:text-sm text-slate-500 hover:text-slate-300 active:text-slate-400 transition-colors duration-200"
+                className="text-xs sm:text-sm text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 active:text-slate-500 dark:active:text-slate-400 transition-colors duration-200"
               >
                 Privacy Policy
               </Link>
               <Link
                 to="#"
-                className="text-xs sm:text-sm text-slate-500 hover:text-slate-300 active:text-slate-400 transition-colors duration-200"
+                className="text-xs sm:text-sm text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 active:text-slate-500 dark:active:text-slate-400 transition-colors duration-200"
               >
                 Terms of Service
               </Link>
               <Link
                 to="#"
-                className="text-xs sm:text-sm text-slate-500 hover:text-slate-300 active:text-slate-400 transition-colors duration-200"
+                className="text-xs sm:text-sm text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 active:text-slate-500 dark:active:text-slate-400 transition-colors duration-200"
               >
                 Cookies
               </Link>
