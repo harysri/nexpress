@@ -41,15 +41,15 @@ export default function FileUpload({
       className={`rounded-xl border border-dashed p-8 text-center transition-colors ${
         dragging
           ? "border-indigo-500 bg-indigo-500/5"
-          : "border-slate-700 bg-slate-900/40 hover:border-slate-600"
+          : "border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-slate-900/40 hover:border-slate-400 dark:hover:border-slate-600"
       }`}
     >
       <UploadCloud
-        className="mx-auto mb-4 h-12 w-12 text-indigo-400"
+        className="mx-auto mb-4 h-12 w-12 text-indigo-600 dark:text-indigo-400"
         aria-hidden="true"
       />
-      <p className="mb-1 text-lg font-semibold text-white">{label}</p>
-      <p className="mb-5 text-sm text-slate-400">{description}</p>
+      <p className="mb-1 text-lg font-semibold text-slate-900 dark:text-white">{label}</p>
+      <p className="mb-5 text-sm text-slate-500 dark:text-slate-400">{description}</p>
 
       <input
         ref={inputRef}
