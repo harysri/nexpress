@@ -51,7 +51,7 @@ const Home = () => {
       title: "PDF Merger",
       description:
         "Upload multiple PDFs and combine them into a single document while preserving original formatting.",
-      color: "text-blue-400",
+      color: "text-blue-600 dark:text-blue-400",
       bg: "bg-blue-500/10",
       border: "hover:border-blue-500/50",
     },
@@ -60,7 +60,7 @@ const Home = () => {
       title: "Compress PDF",
       description:
         "Reduce PDF file size with adjustable compression levels without losing quality.",
-      color: "text-emerald-400",
+      color: "text-emerald-600 dark:text-emerald-400",
       bg: "bg-emerald-500/10",
       border: "hover:border-emerald-500/50",
     },
@@ -69,7 +69,7 @@ const Home = () => {
       title: "Image to Text (OCR)",
       description:
         "Extract editable text from scanned documents or images using advanced optical character recognition.",
-      color: "text-indigo-400",
+      color: "text-indigo-600 dark:text-indigo-400",
       bg: "bg-indigo-500/10",
       border: "hover:border-indigo-500/50",
     },
@@ -78,7 +78,7 @@ const Home = () => {
       title: "Password Protection",
       description:
         "Encrypt your PDFs with password protection or remove existing passwords securely.",
-      color: "text-rose-400",
+      color: "text-rose-600 dark:text-rose-400",
       bg: "bg-rose-500/10",
       border: "hover:border-rose-500/50",
     },
@@ -87,7 +87,7 @@ const Home = () => {
       title: "Extract Images",
       description:
         "Extract all embedded images from your PDF documents in high quality.",
-      color: "text-amber-400",
+      color: "text-amber-600 dark:text-amber-400",
       bg: "bg-amber-500/10",
       border: "hover:border-amber-500/50",
     },
@@ -96,7 +96,7 @@ const Home = () => {
       title: "Images to PDF",
       description:
         "Convert JPG/PNG images into new PDFs or append them to existing documents.",
-      color: "text-violet-400",
+      color: "text-violet-600 dark:text-violet-400",
       bg: "bg-violet-500/10",
       border: "hover:border-violet-500/50",
     },
@@ -105,7 +105,7 @@ const Home = () => {
       title: "Organize & Split",
       description:
         "Reorder, rotate and delete pages visually, or split a document into parts by page range.",
-      color: "text-cyan-400",
+      color: "text-cyan-600 dark:text-cyan-400",
       bg: "bg-cyan-500/10",
       border: "hover:border-cyan-500/50",
     },
@@ -114,7 +114,7 @@ const Home = () => {
       title: "Sign & Watermark",
       description:
         "Draw a signature, stamp a watermark and add page numbers without leaving the browser.",
-      color: "text-pink-400",
+      color: "text-pink-600 dark:text-pink-400",
       bg: "bg-pink-500/10",
       border: "hover:border-pink-500/50",
     },
@@ -123,7 +123,7 @@ const Home = () => {
       title: "PDF to Images",
       description:
         "Render any PDF page to a high-resolution JPG or PNG, then download them as a ZIP.",
-      color: "text-sky-400",
+      color: "text-sky-600 dark:text-sky-400",
       bg: "bg-sky-500/10",
       border: "hover:border-sky-500/50",
     },
@@ -157,13 +157,13 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-200 selection:bg-indigo-500/30 font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-200 selection:bg-indigo-500/30 font-sans overflow-x-hidden">
       {/* Background Decor - Animated */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <Motion.div
           animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-indigo-900/20 blur-[120px]"
+          className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-indigo-300/25 dark:bg-indigo-900/20 blur-[120px]"
         />
         <Motion.div
           animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
@@ -173,7 +173,7 @@ const Home = () => {
             ease: "easeInOut",
             delay: 1,
           }}
-          className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-blue-900/10 blur-[120px]"
+          className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-blue-300/25 dark:bg-blue-900/10 blur-[120px]"
         />
       </div>
 
@@ -187,9 +187,9 @@ const Home = () => {
         <div className="text-center max-w-4xl mx-auto mb-24">
           <Motion.div
             variants={itemVariants}
-            className="inline-flex items-center justify-center p-2 mb-8 bg-slate-900/50 border border-slate-800 rounded-full backdrop-blur-sm"
+            className="inline-flex items-center justify-center p-2 mb-8 bg-white/80 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-full backdrop-blur-sm"
           >
-            <span className="flex items-center gap-2 px-3 py-1 text-sm font-medium text-indigo-400">
+            <span className="flex items-center gap-2 px-3 py-1 text-sm font-medium text-indigo-600 dark:text-indigo-400">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
@@ -200,17 +200,17 @@ const Home = () => {
 
           <Motion.h1
             variants={itemVariants}
-            className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight leading-tight"
+            className="text-5xl md:text-7xl font-bold text-slate-900 dark:text-white mb-8 tracking-tight leading-tight"
           >
             Next Generation <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-cyan-500 dark:from-indigo-400 dark:to-cyan-400">
               PDF & OCR Editor
             </span>
           </Motion.h1>
 
           <Motion.p
             variants={itemVariants}
-            className="text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed"
+            className="text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed"
           >
             Compress, merge, protect, and extract text with professional-grade
             tools. Fast, secure, and completely free to use.
@@ -224,7 +224,7 @@ const Home = () => {
               <Motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative inline-flex h-14  items-center justify-center overflow-hidden rounded-full bg-indigo-600 px-8 font-medium text-white transition-all duration-300 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 focus:ring-offset-slate-900"
+                className="group relative inline-flex h-14  items-center justify-center overflow-hidden rounded-full bg-indigo-600 px-8 font-medium text-white transition-all duration-300 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-slate-900"
               >
                 <span className="mr-2 ml-2 pt-2 pb-2 ">Get Started Free</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -244,11 +244,11 @@ const Home = () => {
           <div className="text-center mb-16">
             <Motion.h2
               variants={itemVariants}
-              className="text-3xl font-bold text-white mb-4 tracking-tight"
+              className="text-3xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight"
             >
               Powerful Features
             </Motion.h2>
-            <Motion.p variants={itemVariants} className="text-slate-400">
+            <Motion.p variants={itemVariants} className="text-slate-500 dark:text-slate-400">
               Everything you need to manage and transform your documents
             </Motion.p>
           </div>
@@ -259,17 +259,17 @@ const Home = () => {
                 key={index}
                 variants={itemVariants}
                 whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                className={`group bg-slate-900/50 backdrop-blur-sm rounded-xl p-6 border border-slate-800 transition-colors duration-300 hover:bg-slate-800/50 ${feature.border}`}
+                className={`group bg-white/80 dark:bg-slate-900/50 backdrop-blur-sm rounded-xl p-6 border border-slate-200 dark:border-slate-800 transition-colors duration-300 hover:bg-slate-100/80 dark:hover:bg-slate-800/50 ${feature.border}`}
               >
                 <div
                   className={`w-12 h-12 ${feature.bg} ${feature.color} rounded-lg flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110`}
                 >
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-3">
+                <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
                   {feature.description}
                 </p>
               </Motion.div>
@@ -289,13 +289,13 @@ const Home = () => {
             <div>
               <Motion.h2
                 variants={itemVariants}
-                className="text-3xl font-bold text-white mb-4 tracking-tight"
+                className="text-3xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight"
               >
                 How It Works
               </Motion.h2>
               <Motion.p
                 variants={itemVariants}
-                className="text-slate-400 text-lg"
+                className="text-slate-500 dark:text-slate-400 text-lg"
               >
                 Transform your PDFs in just four simple steps
               </Motion.p>
@@ -312,7 +312,7 @@ const Home = () => {
                 className={`group relative p-6 rounded-xl border transition-all duration-300 cursor-default ${
                   activeStep === index
                     ? "bg-indigo-500/5 border-indigo-500/30"
-                    : "bg-slate-900/20 border-slate-800 hover:border-slate-700"
+                    : "bg-white/60 dark:bg-slate-900/20 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700"
                 }`}
               >
                 <div
@@ -324,12 +324,12 @@ const Home = () => {
                 </div>
                 <h3
                   className={`text-lg font-bold mb-3 transition-colors ${
-                    activeStep === index ? "text-white" : "text-slate-200"
+                    activeStep === index ? "text-slate-900 dark:text-white" : "text-slate-700 dark:text-slate-200"
                   }`}
                 >
                   {step.title}
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
                   {step.description}
                 </p>
               </Motion.div>
@@ -343,10 +343,10 @@ const Home = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7 }}
-          className="bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden mb-24"
+          className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden mb-24"
         >
           <div className="p-8 md:p-12">
-            <h2 className="text-3xl font-bold text-white text-center mb-12 tracking-tight">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white text-center mb-12 tracking-tight">
               Quick Tutorial
             </h2>
 
@@ -358,22 +358,22 @@ const Home = () => {
                 className="space-y-8"
               >
                 <Motion.div variants={itemVariants}>
-                  <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-3">
+                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-3">
                     <CheckCircle2 className="w-5 h-5 text-indigo-500" />
                     Optical Character Recognition (OCR)
                   </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed pl-8">
+                  <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed pl-8">
                     Upload any image or scanned PDF. NexPress will analyze the
                     visual data and convert it into selectable, editable text
                     that you can copy or export to a document instantly.
                   </p>
                 </Motion.div>
                 <Motion.div variants={itemVariants}>
-                  <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-3">
+                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-3">
                     <CheckCircle2 className="w-5 h-5 text-indigo-500" />
                     Merging Multiple PDFs
                   </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed pl-8">
+                  <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed pl-8">
                     Upload multiple PDF files, drag to reorder them as needed,
                     and click merge. All original formatting, bookmarks, and
                     hyperlinks are preserved in the final document.
@@ -388,22 +388,22 @@ const Home = () => {
                 className="space-y-8"
               >
                 <Motion.div variants={itemVariants}>
-                  <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-3">
+                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-3">
                     <CheckCircle2 className="w-5 h-5 text-indigo-500" />
                     Adding Security
                   </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed pl-8">
+                  <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed pl-8">
                     Protect your documents by adding password encryption. You
                     can also remove passwords from PDFs by providing the correct
                     key. Your files are processed securely.
                   </p>
                 </Motion.div>
                 <Motion.div variants={itemVariants}>
-                  <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-3">
+                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-3">
                     <CheckCircle2 className="w-5 h-5 text-indigo-500" />
                     Compressing PDFs
                   </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed pl-8">
+                  <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed pl-8">
                     Upload your PDF and choose from three compression levels.
                     NexPress intelligently optimizes images and removes
                     redundant data while maintaining high readability.
@@ -420,14 +420,14 @@ const Home = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="relative rounded-3xl overflow-hidden border border-slate-800"
+          className="relative rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/50 to-blue-900/50" />
+          <div className="absolute inset-0 bg-gradient-to-r from-indigo-200/60 dark:from-indigo-900/50 to-blue-200/60 dark:to-blue-900/50" />
           <div className="relative px-6 py-20 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight">
               Ready to Get Started?
             </h2>
-            <p className="text-lg text-slate-300 mb-10 max-w-xl mx-auto">
+            <p className="text-lg text-slate-600 dark:text-slate-300 mb-10 max-w-xl mx-auto">
               Join thousands of users who trust NexPress for their PDF and OCR
               needs. No credit card required.
             </p>
