@@ -137,7 +137,7 @@ export default function SplitPDF() {
 
       {tool.files.length > 0 && (
         <div className={CARD}>
-          <p className="mb-4 truncate text-sm text-white">{tool.file.name}</p>
+          <p className="mb-4 truncate text-sm text-slate-900 dark:text-white">{tool.file.name}</p>
           <label className={LABEL} htmlFor="split-ranges">
             Page ranges
           </label>
@@ -171,7 +171,7 @@ export default function SplitPDF() {
       {parts.length > 0 && (
         <section className={CARD} aria-label="Split results">
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-400">
+            <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
               {parts.length} document{parts.length === 1 ? "" : "s"}
             </h2>
             <button
@@ -188,10 +188,10 @@ export default function SplitPDF() {
             {parts.map((part) => (
               <li
                 key={part.name}
-                className="flex items-center gap-3 rounded-lg border border-slate-800 bg-slate-900/50 p-3"
+                className="flex items-center gap-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/50 p-3"
               >
                 <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm text-white">{part.name}</p>
+                  <p className="truncate text-sm text-slate-900 dark:text-white">{part.name}</p>
                   <p className="text-xs text-slate-500">
                     {part.label} · {formatFileSize(part.size)}
                   </p>
