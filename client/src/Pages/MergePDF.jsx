@@ -82,7 +82,7 @@ export default function MergePDF() {
       {tool.files.length > 0 && (
         <div className={CARD}>
           <div className="mb-4 flex items-center justify-between">
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-400">
+            <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
               {tool.files.length} file{tool.files.length === 1 ? "" : "s"} ·
               drag to reorder
             </h2>
