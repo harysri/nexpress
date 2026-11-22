@@ -106,7 +106,7 @@ export default function SignPDF() {
 
       {tool.files.length > 0 && (
         <div className={CARD}>
-          <p className="mb-5 truncate text-sm text-slate-400">{tool.file.name}</p>
+          <p className="mb-5 truncate text-sm text-slate-500 dark:text-slate-400">{tool.file.name}</p>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <label className={LABEL} htmlFor="sign-scope">
