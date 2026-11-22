@@ -154,7 +154,7 @@ export default function OrganizePDF() {
       />
 
       {loadError && (
-        <p className="rounded-xl border border-rose-500/30 bg-rose-500/10 p-4 text-sm text-rose-200">
+        <p className="rounded-xl border border-rose-500/30 bg-rose-500/10 p-4 text-sm text-rose-700 dark:text-rose-200">
           {loadError}
         </p>
       )}
@@ -162,7 +162,7 @@ export default function OrganizePDF() {
       {tool.files.length > 0 && pages.length > 0 && (
         <div className={CARD}>
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-            <p className="text-sm text-slate-400">
+            <p className="text-sm text-slate-500 dark:text-slate-400">
               {kept.length} of {pages.length} pages kept · blue outline means
               rotated
             </p>
@@ -182,11 +182,11 @@ export default function OrganizePDF() {
                 key={page.original}
                 className={`rounded-lg border p-2 transition-colors ${
                   page.keep
-                    ? "border-slate-800 bg-slate-900/60"
+                    ? "border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/60"
                     : "border-rose-500/30 bg-rose-500/5 opacity-60"
                 }`}
               >
-                <div className="relative flex justify-center overflow-hidden rounded bg-slate-950/40 p-1">
+                <div className="relative flex justify-center overflow-hidden rounded bg-white/70 dark:bg-slate-950/40 p-1">
                   <PdfPage
                     doc={doc}
                     pageNumber={page.original + 1}
@@ -194,7 +194,7 @@ export default function OrganizePDF() {
                     width={120}
                     className="h-auto max-w-full rounded"
                   />
-                  <span className="absolute left-1 top-1 rounded bg-slate-950/80 px-1.5 py-0.5 text-[10px] font-semibold text-slate-300">
+                  <span className="absolute left-1 top-1 rounded bg-slate-900/75 px-1.5 py-0.5 text-[10px] font-semibold text-white dark:bg-slate-950/80 dark:text-slate-200">
                     {page.original + 1}
                   </span>
                 </div>
