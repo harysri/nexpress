@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+public/Files.md
+public/manifest.webmanifest
+public/robots.txt
+sitemap.xml
