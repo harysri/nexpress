@@ -117,7 +117,7 @@ export default function WatermarkPDF() {
 
       {tool.files.length > 0 && (
         <div className={CARD}>
-          <p className="mb-5 truncate text-sm text-slate-400">
+          <p className="mb-5 truncate text-sm text-slate-500 dark:text-slate-400">
             {tool.file.name} · {formatFileSize(tool.file.size)}
           </p>
 
@@ -185,7 +185,7 @@ export default function WatermarkPDF() {
                   <option value={90}>Vertical</option>
                 </select>
               </div>
-              <label className="flex items-end gap-2 pb-2.5 text-sm text-slate-300">
+              <label className="flex items-end gap-2 pb-2.5 text-sm text-slate-600 dark:text-slate-300">
                 <input
                   type="checkbox"
                   checked={firstPageOnly}
@@ -196,9 +196,9 @@ export default function WatermarkPDF() {
               </label>
             </div>
 
-            <fieldset className="border-t border-slate-800 pt-5">
+            <fieldset className="border-t border-slate-200 dark:border-slate-800 pt-5">
               <legend className={SECTION_TITLE}>Page numbers</legend>
-              <label className="mb-3 flex items-center gap-2 text-sm text-slate-300">
+              <label className="mb-3 flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
                 <input
                   type="checkbox"
                   checked={addNumbers}
