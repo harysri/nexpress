@@ -11,8 +11,8 @@ export default function NotFound() {
   return (
     <main className="mx-auto flex min-h-[70vh] max-w-lg flex-col items-center justify-center px-6 text-center">
       <p className="text-6xl font-black text-indigo-500/80">404</p>
-      <h1 className="mt-4 text-2xl font-bold text-white">This page is blank</h1>
-      <p className="mt-3 text-sm leading-relaxed text-slate-400">
+      <h1 className="mt-4 text-2xl font-bold text-slate-900 dark:text-white">This page is blank</h1>
+      <p className="mt-3 text-sm leading-relaxed text-slate-500 dark:text-slate-400">
         The link you followed does not point to a tool. Everything is still
         here — pick a tool and carry on.
       </p>
@@ -26,7 +26,7 @@ export default function NotFound() {
         </Link>
         <Link
           to="/"
-          className="rounded-lg border border-slate-700 px-5 py-2.5 text-sm font-medium text-slate-200 transition-colors hover:border-slate-500"
+          className="rounded-lg border border-slate-300 dark:border-slate-700 px-5 py-2.5 text-sm font-medium text-slate-700 dark:text-slate-200 transition-colors hover:border-slate-500"
         >
           Home
         </Link>
