@@ -45,7 +45,7 @@ const FAQS = [
 ];
 
 const strengthFor = (value) => {
-  if (!value) return { label: "Empty", width: "0%", color: "bg-slate-700" };
+  if (!value) return { label: "Empty", width: "0%", color: "bg-slate-200 dark:bg-slate-700" };
   let score = 0;
   if (value.length >= 6) score += 1;
   if (value.length >= 10) score += 1;
@@ -139,7 +139,7 @@ export default function ProtectPDF() {
           <div
             role="tablist"
             aria-label="Password mode"
-            className="mb-5 flex gap-2 rounded-lg bg-slate-950/60 p-1"
+            className="mb-5 flex gap-2 rounded-lg bg-white/80 dark:bg-slate-950/60 p-1"
           >
             {[
               { id: "protect", label: "Protect", icon: Lock },
@@ -160,8 +160,8 @@ export default function ProtectPDF() {
                   }}
                   className={`flex flex-1 items-center justify-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
                     active
-                      ? "bg-rose-500/15 text-rose-200"
-                      : "text-slate-400 hover:text-white"
+                      ? "bg-rose-500/15 text-rose-700 dark:text-rose-200"
+                      : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
                   }`}
                 >
                   <Icon className="h-4 w-4" aria-hidden="true" />
@@ -171,7 +171,7 @@ export default function ProtectPDF() {
             })}
           </div>
 
-          <p className="mb-4 truncate text-sm text-slate-400">
+          <p className="mb-4 truncate text-sm text-slate-500 dark:text-slate-400">
             {tool.file.name} · {formatFileSize(tool.file.size)}
           </p>
 
@@ -193,7 +193,7 @@ export default function ProtectPDF() {
                   type="button"
                   onClick={() => setShowPassword((value) => !value)}
                   aria-label={showPassword ? "Hide password" : "Show password"}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1.5 text-slate-400 hover:text-white"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1.5 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
                 >
                   {showPassword ? (
                     <EyeOff className="h-4 w-4" aria-hidden="true" />
@@ -204,7 +204,7 @@ export default function ProtectPDF() {
               </div>
               {protecting && password && (
                 <div className="mt-2">
-                  <div className="h-1 w-full overflow-hidden rounded-full bg-slate-800">
+                  <div className="h-1 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
                     <div
                       className={`h-full transition-all ${strength.color}`}
                       style={{ width: strength.width }}
@@ -235,7 +235,7 @@ export default function ProtectPDF() {
 
                 <fieldset className="space-y-2">
                   <legend className={LABEL}>Permissions</legend>
-                  <label className="flex items-center gap-2 text-sm text-slate-300">
+                  <label className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
                     <input
                       type="checkbox"
                       checked={allowPrinting}
@@ -244,7 +244,7 @@ export default function ProtectPDF() {
                     />
                     Allow printing
                   </label>
-                  <label className="flex items-center gap-2 text-sm text-slate-300">
+                  <label className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
                     <input
                       type="checkbox"
                       checked={allowCopying}
