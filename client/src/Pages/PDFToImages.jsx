@@ -121,7 +121,7 @@ export default function PDFToImages() {
 
       {tool.files.length > 0 && (
         <div className={CARD}>
-          <p className="mb-5 truncate text-sm text-slate-400">
+          <p className="mb-5 truncate text-sm text-slate-500 dark:text-slate-400">
             {tool.file.name} · {formatFileSize(tool.file.size)}
           </p>
 
@@ -197,7 +197,7 @@ export default function PDFToImages() {
       {images.length > 0 && (
         <section className={CARD} aria-label="Rendered pages">
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-400">
+            <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
               {images.length} page{images.length === 1 ? "" : "s"}
             </h2>
             <button
@@ -215,9 +215,9 @@ export default function PDFToImages() {
             {images.map((image) => (
               <li
                 key={image.file.name}
-                className="overflow-hidden rounded-lg border border-slate-800 bg-slate-900/60"
+                className="overflow-hidden rounded-lg border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/60"
               >
-                <div className="flex h-32 items-center justify-center bg-slate-950/50 p-2">
+                <div className="flex h-32 items-center justify-center bg-white/70 dark:bg-slate-950/50 p-2">
                   <img
                     src={image.url}
                     alt={`Page ${image.page}`}
@@ -226,7 +226,7 @@ export default function PDFToImages() {
                   />
                 </div>
                 <div className="p-2">
-                  <p className="text-xs text-slate-300">Page {image.page}</p>
+                  <p className="text-xs text-slate-600 dark:text-slate-300">Page {image.page}</p>
                   <p className="text-[11px] text-slate-500">
                     {formatFileSize(image.file.size)} · {image.width}×
                     {image.height}
