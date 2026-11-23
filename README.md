@@ -1,4 +1,4 @@
-# NexPress — Next Generation PDF & OCR Editor
+# NexPress - Next Generation PDF & OCR Editor
 
 <p align="center">
   <img src="./screenshots/home.png" alt="NexPress Home Screen" width="800" />
@@ -206,8 +206,6 @@ The app is served at **http://localhost:5173** with hot module replacement.
 | `npm run lint`    | Run ESLint over the project                  |
 | `npm test`        | Run the PDF core unit tests with `node:test` |
 
-> **Changing `tailwind.config.js`?** Restart the dev server afterwards — Tailwind reads the config once, so a changed `darkMode` strategy will not hot-reload.
-
 ---
 
 ## 🧭 Routes
@@ -411,7 +409,6 @@ npm run build
 - [ ] **OCR directly on PDF pages** — no need to export page images first
 - [ ] **Recent files / session history** — revisit something you just processed
 - [ ] **Optional cloud save** — Drive or Dropbox for finished files
-- [ ] **Merge and reorder inside other tools** — one shared file queue
 
 ---
 
