@@ -21,7 +21,7 @@
 </p>
 
 <p align="center">
-  <a href="https://nexpresshrx.netlify.app/" target="_blank" rel="noopener noreferrer">
+  <a href="" target="_blank" rel="noopener noreferrer">
     <img src="https://img.shields.io/badge/Live%20Demo-View-brightgreen?style=flat-square" alt="Live Demo" />
   </a>
 </p>
