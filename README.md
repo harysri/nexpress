@@ -393,13 +393,6 @@ The suite exercises the real pdf-lib code paths in `src/utils/pdfCore.js`:
 - AES-256 protection requiring the password to reopen, and rejecting a wrong one
 - watermarking and page numbering
 
-Before opening a pull request, also run:
-
-```bash
-npm run lint
-npm run build
-```
-
 ---
 
 ## 🔮 Roadmap
