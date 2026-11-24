@@ -21,6 +21,7 @@ const ExtractImages = lazy(() => import("./Pages/ExtractImages.jsx"));
 const ImagesToPDF = lazy(() => import("./Pages/ImagesToPDF.jsx"));
 const PDFToImages = lazy(() => import("./Pages/PDFToImages.jsx"));
 const ImageToText = lazy(() => import("./Pages/ImageToText.jsx"));
+const FAQ = lazy(() => import("./Pages/FAQ.jsx"));
 const NotFound = lazy(() => import("./Pages/NotFound.jsx"));
 
 const RouteFallback = () => (
@@ -60,6 +61,7 @@ function App() {
                 <Route path="/images-to-pdf" element={<ImagesToPDF />} />
                 <Route path="/pdf-to-images" element={<PDFToImages />} />
                 <Route path="/image-to-text" element={<ImageToText />} />
+                <Route path="/faq" element={<FAQ />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>

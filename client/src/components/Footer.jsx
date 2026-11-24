@@ -8,10 +8,8 @@ const Footer = () => {
 
   const footerLinks = {
     support: [
-      { name: "Help Center", href: "#help" },
-      { name: "Documentation", href: "#docs" },
-      { name: "FAQ", href: "#faq" },
-      { name: "Community", href: "#community" },
+      { name: "Documentation", href: "https://github.com/harysri/nexpress" },
+      { name: "FAQ", href: "/faq" },
     ],
   };
 
